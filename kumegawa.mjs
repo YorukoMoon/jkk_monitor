@@ -60,9 +60,11 @@ setInterval(() => {
         headers: headers,
         body: formData.toString()
     })
-        .then(response => response.text())
-        .then(html => {
-            console.log("成功获取数据:", html);
-        })
+        .then(response => response.arrayBuffer())
+        .then(buffer  => {
+            const decoder = new TextDecoder('shift_jis'); // 使用 shift_jis 解码（Windows-31J 兼容）
+            const text = decoder.decode(buffer);
+            console.log("解码后的响应:", text);       
+         })
         .catch(error => console.error("请求出错:", error));
 }, 5000);
