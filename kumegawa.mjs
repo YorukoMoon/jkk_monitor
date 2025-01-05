@@ -1,5 +1,7 @@
 import fetch from 'node-fetch';
-import fs from 'fs';
+// import fs from 'fs';
+import nodemailer from 'nodemailer';
+
 
 
 const url = "https://jhomes.to-kousya.or.jp/search/jkknet/service/akiyaJyoukenRef";
@@ -234,7 +236,32 @@ async function fetchToken() {
 }
 //定义函数，发送邮件
 function sendEmail() {
-    
+
+    // 创建一个 SMTP 传输器
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',  // 这里使用 Gmail 的 SMTP 服务，其他邮件服务商可以使用相应的设置
+        auth: {
+            user: 'g1465422485@gmail.com',  // 发件人邮箱地址
+            pass: 'urtqwnhtqcutxbto',   // 发件人邮箱密码
+        },
+    });
+
+    // 设置邮件内容
+    let mailOptions = {
+        from: 'g1465422485@gmail.com',  // 发件人邮箱地址
+        to: ['g1465422485@outlook.com', '1465422485@qq.com'],  // 收件人邮箱地址
+        subject: '久米川有房子了！！',  // 邮件主题
+        text: '久米川有房子了！！！！',  // 邮件正文
+    };
+
+    // 发送邮件给我
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log('Email发送失败:', error);
+        } else {
+            console.log('Email发送成功:', info.response);
+        }
+    });
 }
 let intervalToken;
 let intervalGetHouse;
