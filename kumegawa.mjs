@@ -249,7 +249,7 @@ function sendEmail() {
     // 设置邮件内容
     let mailOptions = {
         from: 'g1465422485@gmail.com',  // 发件人邮箱地址
-        to: ['g1465422485@outlook.com', '1465422485@qq.com'],  // 收件人邮箱地址
+        to: ['g1465422485@outlook.com', '1465422485@qq.com','liyafayee@gmail.com'],  // 收件人邮箱地址
         subject: '久米川有房子了！！',  // 邮件主题
         text: '久米川有房子了！！！！',  // 邮件正文
     };
